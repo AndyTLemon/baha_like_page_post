@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name            巴哈整頁點讚
+// @namespace       https://github.com/AndyTLemon/baha_like_page_post.git
+// @version         1.0
+// @description     巴哈整頁點讚
+// @author          AndyTLemon
+// @match           *forum.gamer.com.tw/C.php?*
+// @grant           none
+// ==/UserScript==
+
 async function btnfunction() {
     const timer = ms => new Promise(res => setTimeout(res, ms))
 
