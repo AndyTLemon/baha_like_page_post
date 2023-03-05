@@ -23,7 +23,7 @@ async function btnfunction() {
             let x = item.getElementsByTagName("button")[0]
             if (x.className.indexOf("is-active") == -1) {
                 x.click();
-                await timer((Math.random() * 3 + 1) * 1000 | 0);
+                await timer((Math.random() * 5 + 15) * 1000 | 0);
             }
         } else {
             item.click();
