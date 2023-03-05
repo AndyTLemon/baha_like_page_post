@@ -40,4 +40,7 @@ window.btnfunction = btnfunction;
 
     let btnpos = document.getElementById("BH-menu-path").getElementsByTagName("ul")[1];
     btnpos.insertAdjacentHTML("beforeend", button);
+
+    let btnpos2 = document.getElementsByClassName("toolbar")[1];
+    btnpos2.insertAdjacentHTML("beforeend", button);
 })();
