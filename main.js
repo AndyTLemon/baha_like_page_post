@@ -6,6 +6,7 @@
 // @author          AndyTLemon
 // @match           *forum.gamer.com.tw/C.php?*
 // @grant           none
+//@icon              https://forum.gamer.com.tw/favicon.ico
 // ==/UserScript==
 
 async function btnfunction() {
