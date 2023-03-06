@@ -1,33 +1,42 @@
 // ==UserScript==
 // @name            巴哈整頁點讚
 // @namespace       https://github.com/AndyTLemon/baha_like_page_post.git
-// @version         1.1
+// @version         1.2
 // @description     巴哈整頁點讚
 // @author          AndyTLemon
 // @match           *forum.gamer.com.tw/C.php?*
 // @grant           none
-//@icon              https://forum.gamer.com.tw/favicon.ico
+// @icon              https://forum.gamer.com.tw/favicon.ico
 // ==/UserScript==
 
 async function btnfunction() {
-    const timer = ms => new Promise(res => setTimeout(res, ms))
+    const wait = ms => new Promise(res => setTimeout(res, ms))
 
     for (let item of document.getElementsByClassName("more-reply")) {
         item.click();
-        await timer((Math.random() * 3 + 1) * 100 | 0);
+        await wait((Math.random() * 3 + 1) * 100 | 0);
     };
-    await timer((Math.random() * 3 + 1) * 1000 | 0);
+    await wait((Math.random() * 3 + 1) * 1000 | 0);
 
-    for (let item of document.getElementsByClassName("gp")) {
-        if (item.tagName == "DIV") {
-            let x = item.getElementsByTagName("button")[0]
-            if (x.className.indexOf("is-active") == -1) {
-                x.click();
-                await timer((Math.random() * 5 + 60) * 1000 | 0);
-            }
+    let startdoc = document.getElementsByClassName("gp")
+    for (let i = 0; i < startdoc.length; i++) {
+        if (startdoc[i].tagName == "DIV") {
+            while (true) {
+                startdoc[i].getElementsByTagName("button")[0].click();
+                await wait(1500);
+                let newestmsg = document.getElementsByClassName("toast-message")[0].innerText;
+                if (newestmsg.includes("勇者獲得了 1 點能量")) {
+                    console.log("wait 65s");
+                    await wait((Math.random() * 5 + 61) * 1000 | 0);
+                    break;
+                } else if (newestmsg.includes("間隔時間太短囉! 請稍後再試。") || newestmsg.includes("此技能 CD 冷卻中。")) {
+                    console.log("wait 10s and retry");
+                    await wait((Math.random() * 6 + 7) * 1000 | 0);
+                } else { break; };
+            };
         } else {
-            item.click();
-            await timer((Math.random() * 3 + 1) * 1000 | 0);
+            startdoc[i].click();
+            await wait((Math.random()) * 1000 | 0);
         };
     };
     console.log("done");
@@ -41,6 +50,6 @@ window.btnfunction = btnfunction;
     let btnpos = document.getElementById("BH-menu-path").getElementsByTagName("ul")[1];
     btnpos.insertAdjacentHTML("beforeend", button);
 
-    let btnpos2 = document.getElementsByClassName("toolbar")[1];
-    btnpos2.insertAdjacentHTML("beforeend", button);
+    btnpos = document.getElementsByClassName("toolbar")[1];
+    btnpos.insertAdjacentHTML("beforeend", button);
 })();
