@@ -4,7 +4,7 @@
 // @version         1.2
 // @description     巴哈整頁點讚
 // @author          AndyTLemon
-// @match           *forum.gamer.com.tw/C.php?*
+// @match           *forum.gamer.com.tw/C*.php?*
 // @grant           none
 // @icon              https://forum.gamer.com.tw/favicon.ico
 // ==/UserScript==
